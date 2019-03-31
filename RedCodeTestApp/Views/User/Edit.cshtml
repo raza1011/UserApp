@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    ViewData["Title"] = "Edit User";
+}
+@section scripts{
+    <script src="~/js/user/edit.js"></script>
+}
+
+<br />
+<br />
+
+<div class="container" ng-controller="editUserCtrl">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form name="frm">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" ng-model="user.firstName" name="firstName" placeholder="Enter first name" required>
+                    <span class="text-danger" ng-show="(frm.$submitted || frm.firstName.$touched || frm.firstName.$dirty && frm.firstName.$invalid)">
+                        <span ng-show="frm.firstName.$error.required">First name is required.</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" ng-model="user.lastName" name="lastName" placeholder="Enter last name">
+                </div>
+                <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" ng-model="user.userName" name="userName" placeholder="Enter user name" required>
+                    <span class="text-danger" ng-show="(frm.$submitted || frm.userName.$touched || frm.userName.$dirty && frm.userName.$invalid)">
+                        <span ng-show="frm.userName.$error.required">User name is required.</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" ng-model="user.email" name="email" placeholder="Enter email" required>
+                    <span class="text-danger" ng-show="(frm.$submitted || frm.email.$touched || frm.email.$dirty && frm.email.$invalid)">
+                        <span ng-show="frm.email.$error.required">Email is required.</span>
+                        @*<span ng-show="frm.email.$error.required">Email is required.</span>*@
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" ng-model="user.password" name="password" placeholder="Password" required>
+                    <span class="text-danger" ng-show="(frm.$submitted || frm.password.$touched || frm.password.$dirty && frm.password.$invalid)">
+                        <span ng-show="frm.password.$error.required">Password is required.</span>
+                    </span>
+                </div>
+
+                <div class="form-check">
+                    <input type="button" value="Update" class="btn btn-success" ng-click="edit()" ng-disabled="frm.$invalid"/>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+</div>
+
+<input type="hidden" value="@ViewBag.Id" id="hidId"/>

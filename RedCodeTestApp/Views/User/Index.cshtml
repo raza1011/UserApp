@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section scripts{ 
+    <script src="~/js/user/index.js"></script>
+}
+    <br />
+<div class="row">
+    <div class="col-md-12">
+        <h2>User List</h2>
+    </div>
+   
+</div>
+<br />
+<div class="row" ng-controller="userCtrl">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr style="background-color: gainsboro">
+                    <th>
+                        Sr. No.
+                    </th>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        User Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in users">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>
+                        <i class="fas fa-edit" style="cursor:pointer;" ng-click="edit(item.id)"></i>
+                        <i class="fas fa-trash" style="cursor:pointer;color:red;" ng-click="delete(item.id)"></i>
+                    </td>
+                </tr>
+                <tr ng-if="!users || users.length==0">
+                    <td colspan="5" style="text-align:center">
+                        No user data to display
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+</div>
