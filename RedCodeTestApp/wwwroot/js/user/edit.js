@@ -1,4 +1,5 @@
 ﻿app.controller('editUserCtrl', ['$scope', 'userService', function ($scope, userService) {
+
     $scope.user = {};
 
     angular.element(document).ready(function () {
